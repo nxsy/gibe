@@ -1,6 +1,6 @@
 Django==1.2.3
 mongoengine==0.3
 pymongo==1.8.1
-markdown2==1.0.1.17
 smartypants==1.6.0.3
 tweepy==1.7.1
+Markdown==2.0.3
