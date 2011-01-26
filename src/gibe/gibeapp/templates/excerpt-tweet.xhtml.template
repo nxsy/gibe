@@ -1,0 +1,6 @@
+{% load typogrify %}
+{% filter typogrify %}
+            <p class="tweet_meta"><span class="author {% if post.retweet %}retweet{% endif %}">{{post.author_html|safe}}</span> at <span class="posted-at"><a href="{{post.canonical_link}}">{{ post.published_date }}</a></span></p>
+
+            <p class="tweet">{{post.content|safe}}</p>
+{% endfilter %}

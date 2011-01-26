@@ -1,0 +1,55 @@
+            html, body, h1, h2, h3, h4, h5, p, span, ul, li { margin: 0; padding: 0; border: 0; }
+
+            header { display: block; }
+            #tagline { display: inline-block; }
+            ul { display: inline-block; }
+            li { display: inline; }
+
+            body { width: 640px; margin: auto; text-align: left; }
+            header { border-bottom: 1px dotted #f0f0f0; margin: 0 auto; padding-top: 1em; padding-bottom: 0.1em; margin-bottom: 1em; }
+            header::after { clear: both; content: '.'; display: block; height: 0px; visibility: hidden; }
+            header h1 { width: 49.1%; float: left; text-align: left; vertical-align: bottom; color: #777; }
+            header h1 #header-sitename { font-size: 123.1%; }
+            header h1 #header-name { font-size: 116%; }
+            header ul { width: 49.1%; float: right; text-align: right; }
+
+            header li a {
+                text-align: left;
+                display: inline-block;
+                text-indent: -999999px;
+                width: 16px;
+                height: 24px;
+                background-position: 0 8px;
+                background-repeat: no-repeat;
+            }
+            header li.twitter a { background-image: url(twitter-16x16-trans.png); }
+            header li.delicious a { background-image: url(delicious-16x16-trans.png); }
+            header li.flickr a { background-image: url(flickr-16x16-trans.png); }
+            header li.linkedin a { background-image: url(linkedin-16x16-trans.png); }
+            header li.feed a { width: 24px; height: 24px; background-image: url(feed-24x24-trans.png); background-position: 0; }
+
+            /* content { font-family: 'Helvetica Neue', 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; } */
+            content {
+                font-family: "museo-slab-1","museo-slab-2",serif;
+            }
+            content h1 { font-family: Georgia, serif; font-size: 167%; font-weight: bold; margin-bottom: 1.5em; text-align: center; }
+            content p {
+                margin-bottom: 1em;
+                font-size: 123.1%;
+                line-height: 1.5em;
+            }
+            content pre.prettyprint { margin-top: 0.5em; margin-bottom: 1em; border: 1px solid #777; padding: 0.5em; }
+            /*content ul { margin-bottom: 1em; } */
+            content code { border: 1px solid #e0e0e0; background-color: #f3f3f3; }
+            content a { color: #007; }
+            content li {
+                display: list-item;
+                list-style-type: disc;
+                list-style-position: outside;
+                margin-left: 1.5em;
+                font-size: 123.1%;
+                margin-bottom: 1em;
+                line-height: 1.5em;
+            }
+
+            h1 .caps {font-size:.92em;}

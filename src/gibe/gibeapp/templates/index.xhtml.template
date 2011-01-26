@@ -1,0 +1,43 @@
+{% extends "base.xhtml.template" %}
+
+{% block page_style %}
+        <style>
+            content li { font-size: 100%; }
+            ul.feeditems { margin-top: 2em; }
+            ul.feeditems li { list-style-type: none; border-top: 1px dotted #f0f0f0; padding: 0; margin: 0; padding-top: 1em; margin-top: 1em; }
+            ul.feeditems li.first { list-style-type: none; border: 0; }
+            ul.feeditems li::after { clear: both; content: '.'; display: block; height: 0px; visibility: hidden; }
+            ul.feeditems div.post-excerpt { font-size: 123.1%; }
+            ul.feeditems div.post-excerpt p { font-size: 100%; }
+            ul.feeditems div.post-excerpt li { font-size: 100%; }
+            ul.feeditems p.posted-at { text-align: right; font-size: 77%; margin-top: 1em; }
+            li.feeditem-twitter { list-style-image: url(static/twitter-16x16.png); }
+            li.feeditem-twitter p.tweet_meta { padding-bottom: 1em; background-image: url(static/speech_bubble.png); background-repeat: no-repeat; background-position: 1.5em bottom; margin-bottom: 0; line-height: 1em; font-size: 100%; }
+            li.feeditem-twitter.retweet { background-color: #eee; border: 1px dashed #ccc; }
+            li.feeditem-twitter p.retweeted-from { background-color: #eee; border: 1px solid #bbb; float: right; font-size: 85%;}
+            li.feeditem-twitter p.tweet { font-size: 24px; border: 1px solid grey; border-radius: 5px 5px; padding: 1em; font-family: Georgia; line-height: 32px; margin-top: 0; }
+            li.feeditem-delicious { list-style-image: url(static/delicious-16x16.png); }
+            li.feeditem-delicious p { font-size: 100%; color: #777; }
+            li.feeditem-website { list-style-image: url(static/website-16x16.png); }
+            ul.feeditems h2.post-title { font-family: Georgia, serif; font-size: 138.5%; font-weight: bold; margin-bottom: 1.5em; text-align: left; }
+            ul.feeditems h2.delicious-title { font-family: Georgia, serif; font-size: 123.1%; margin-bottom: 1.0em; text-align: left; }
+        </style>
+{% endblock %}
+
+{% block content %}
+            <ul class="feeditems">
+                {% for post in posts %}
+                    <li class="feeditem-{{post.source}} {% if forloop.first %}first{% endif %}">
+                        {% include post.excerpt_template %}
+
+                        {% if 0 %}
+                    {% if post.title %}
+                        {% if post.link %}<a href="{{post.link}}">{% endif %}<h2 class="post-title">{{post.title}}</h2>{% if post.link %}</a>{% endif %}
+                    {% endif %}
+                        <div class="post-excerpt">{{ post.excerpt|safe }}</div>
+                        <p class="posted-at"><a href="{{post.canonical_link}}">{{ post.published_date }}</a></p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+{% endblock %}

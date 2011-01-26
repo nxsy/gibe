@@ -1,0 +1,3 @@
+ <script>
+ Delicious.BlogBadge.writeBadge("delicious-blogbadge-"+Math.random(), '{{post.canonical_url}}', '{{post.title|escapejs}}', {});
+ </script>

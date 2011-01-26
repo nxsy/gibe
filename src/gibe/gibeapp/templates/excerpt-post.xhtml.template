@@ -1,0 +1,10 @@
+{% load typogrify %}
+{% filter typogrify %}
+
+            <a href="{{post.canonical_url}}"><h2 class="post-title">{{post.title}}</h2></a>
+
+            {{post.excerpt|safe}}
+
+            <p class="posted-at">{{ post.published_date }}</p>
+
+{% endfilter %}

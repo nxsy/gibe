@@ -1,0 +1,27 @@
+{% extends "base.xhtml.template" %}
+{% load typogrify %}
+
+{% block page_style %}
+<style>
+.post-date { text-align: right; color: #777; font-size: 87%; margin: 0; padding: 0; }
+p.posted-at { text-align: right; font-size: 77%; margin-top: 1em; }
+p.tweet_meta { padding-bottom: 1em; background-image: url(static/speech_bubble.png); background-repeat: no-repeat; background-position: 1.5em bottom; margin-bottom: 0; line-height: 1em; margin-top: 2em; }
+p.tweet { font-size: 32px; font-family: Georgia; line-height: 40px; margin-top: 0; margin-bottom: 0; padding: 1em; border: 1px solid grey; border-radius: 5px 5px; }
+h1.delicious-title { background-image: url(static/delicious-16x16.png); background-repeat: no-repeat; background-position: 0 4px; font-size: 123.1%; line-height: 40px; }
+</style>
+
+<link rel="canonical" href="{{post.canonical_url}}">
+{% endblock %}
+
+{% block content %}
+
+{% include post.template %}
+
+{% if post.show_delicious %}
+{% include "delicious.xhtml.template" %}
+{% endif %}
+{% if post.show_disqus %}
+{% include "disqus.xhtml.template" %}
+{% endif %}
+
+{% endblock %}

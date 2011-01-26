@@ -1,0 +1,14 @@
+{% load typogrify %}
+{% filter typogrify %}
+
+            <a href="{{post.link_url}}"><h2 class="delicious-title">{{post.title}}</h2></a>
+
+            {{post.excerpt|safe}}
+
+            <script>
+            Delicious.BlogBadge.writeBadge("delicious-blogbadge-"+Math.random(), '{{post.link_url}}', '{{post.title|escapejs}}', {});
+            </script>
+
+            <p class="posted-at"><a href="{{post.canonical_url}}">{{ post.published_date }}</a></p>
+
+{% endfilter %}

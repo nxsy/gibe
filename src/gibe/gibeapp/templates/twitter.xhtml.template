@@ -1,0 +1,33 @@
+{% extends "base.xhtml.template" %}
+
+{% block page_style %}
+<style>
+p.posted-at { text-align: right; font-size: 77%; margin-top: 1em; }
+p.tweet_meta { padding-bottom: 1em; background-image: url(/static/speech_bubble.png); background-repeat: no-repeat; background-position: 1.5em bottom; margin-bottom: 0; line-height: 1em; margin-top: 2em; }
+p.tweet { font-size: 32px; font-family: Georgia; line-height: 40px; margin-top: 0; margin-bottom: 0; padding: 1em; border: 1px solid grey; border-radius: 5px 5px; }
+ul.timeline li { list-style-type: none;
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% include "forms/twitter_update.xhtml.template" %}
+
+                <ul class="timeline">
+                    {% for status in timeline %}
+                        <li class="status-{{status.status_id}} {% if forloop.first %}first{% endif %}">
+                            <p class="tweet_meta"><span class="author">{{status.author_html|safe}} at <span class="posted-at"><a href="{{status.tweet_url}}">{{status.created_at}}</a></span></p>
+                            <p class="tweet">{{status.text|safe}}</p>
+                            <div style="text-align: right">
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="form_id" value="twitter_promote_form" />
+                                    <input type="hidden" name="status_to_promote" value="{{status.status_id}}" />
+                                    <input type="submit" value="Promote">
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </form>
+{% endblock %}

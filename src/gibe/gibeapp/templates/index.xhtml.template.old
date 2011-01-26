@@ -1,0 +1,67 @@
+{% extends "base.xhtml.template" %}
+
+{% block page_style %}
+        <style>
+            ul.feeditems { margin-top: 2em; }
+            ul.feeditems li { list-style-type: none; border-top: 1px dotted #f0f0f0; padding: 0; margin: 0; padding-top: 1em; margin-top: 1em; }
+            ul.feeditems li.first { list-style-type: none; border: 0; }
+            ul.feeditems li::after { clear: both; content: '.'; display: block; height: 0px; visibility: hidden; }
+            ul.feeditems p { font-size: 100%; }
+            ul.feeditems p.posted-at { text-align: right; font-size: 77%; margin-top: 1em; }
+            li.feeditem-twitter { list-style-image: url(static/twitter-16x16.png); }
+            li.feeditem-twitter.retweet { background-color: #eee; border: 1px dashed #ccc; }
+            li.feeditem-twitter p.retweeted-from { background-color: #eee; border: 1px solid #bbb; float: right; font-size: 85%;}
+            li.feeditem-delicious { list-style-image: url(static/delicious-16x16.png); }
+        </style>
+{% endblock %}
+
+{% block content %}
+            <ul class="feeditems">
+                <li class="feeditem-twitter first">
+                    <div>Liking the "Americans don't like football" thing being debunked en masse at <a rel="nofollow" href="http://search.twitter.com/search?q=%23velocityconf">#velocityconf</a>. People are talking. Even if they call it soccer.</div>
+                    <p class="posted-at">10:48, June 22 2010 (SAST)</p></li>
+
+                <li class="feeditem-twitter">
+                    <p class="retweeted-from">♻<a rel="nofollow" href="http://twitter.com/newsycombinator">newsycombinator</a></p><p>You're Doing It Wrong: CS in the real world <a rel="nofollow" href="http://bit.ly/9vs2zG" title="http://queue.acm.org/detail.cfm?id=1814327">http://queue.acm.org/detail...</a></p>
+                    <p class="posted-at">19:00, June 12 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p class="retweeted-from">♻<a rel="nofollow" href="http://twitter.com/RianVDM">RianVDM</a></p>
+                    <p>New blog post: "How to make a 2-week Agile sprint" - <a rel="nofollow" href="http://j.mp/bLm1Cv" title="http://www.elezea.com/2010/06/agile-sprint-planning/">http://www.elezea.com/2010...</a> / <a rel="nofollow" href="http://search.twitter.com/search?q=%23prodmgmt">#prodmgmt</a> <a rel="nofollow" href="http://search.twitter.com/search?q=%23agile">#agile</a></p>
+                    <p class="posted-at">18:02, June 8 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>Highest number of flags on a car so far: 8. 2 wing mirrors, 6 attached to windows. 3 South African, 1 x Brazil, England, ...</p>
+                    <p class="posted-at">15:47, June 3 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>I think @<a rel="nofollow" href="http://twitter.com/adii">adii</a> might need to be careful about saying "good developers" are a dime a dozen when he's "just" creating themes <a rel="nofollow" href="http://search.twitter.com/search?q=%23netprophet">#netprophet</a></p>
+                    <p class="posted-at">11:17, May 13 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-delicious">
+                    <p><a class="ff-what" href="http://www.skmurphy.com/blog/2010/04/25/startup-lessons-learned-conference-coverage-roundup/">SKMurphy &#xbb; Startup Lessons Learned Conference Coverage Roundup</a></p>
+                    <div>
+<script>
+Delicious.BlogBadge.writeBadge("delicious-blogbadge-"+Math.random(), 'http://www.skmurphy.com/blog/2010/04/25/startup-lessons-learned-conference-coverage-roundup/', 'SKMurphy » Startup Lessons Learned Conference Coverage Roundup', {});
+</script>
+                    </div>
+                    <p class="posted-at">April 26 2010</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>From feedback, the Cape Town b/cast of Startup Lessons Learned is tomorrow - details/signup at <a rel="nofollow" href="http://        ...bit.ly/d1iLFR" title="http://sllconf-capetown.eventbrite.com/">http://sllconf-capetown.eventbrite.com/</a> <a rel="nofollow" href="http://search.twitter.com/search?         ...q=%23siliconcape">#siliconcape</a> <a rel="nofollow" href="http://search.twitter.com/search?q=%23sllconf">#sllconf</a></p>
+                    <p class="posted-at">12:31, 23 Apr 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>"Please enter a valid last name". What about my last name is invalid, exactly, Emirates?</p>
+                    <p class="posted-at">13:04, 17 Mar 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>Once again very happy with quality of skills available in CT - where are people looking when they say skills are hard to find? <a rel="nofollow" href="http://search.twitter.com/search?q=%23siliconcape">#siliconcape</a></p>
+                    <p class="posted-at">14:16, 22 Jan 2010 (SAST)</p>
+                </li>
+                <li class="feeditem-twitter">
+                    <p>Those discussing necessity of keeping ideas secret and NDAs on <a rel="nofollow" href="http://search.twitter.com/search?q=%23siliconcape">#siliconcape</a> should read up on the FriendDA — <a rel="nofolow" href="http://friendda.org/">http://friendda.org/</a></p>
+                    <p class="posted-at">14:16, 22 Jan 2010 (SAST)</p>
+                </li>
+            </ul>
+{% endblock %}

@@ -1,0 +1,7 @@
+<form action="" class="" id="twitter_update_form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_id" value="twitter_update_form" />
+    <div class="button_row">
+        <button type="submit" class="button submit btn_secondary" value="Update tweets">Update tweets</button>
+    </div>
+</form>

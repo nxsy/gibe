@@ -1,0 +1,8 @@
+{% load typogrify %}
+{% filter typogrify %}
+            {% if post.title %}<h1>{{post.title}}</h1>{% endif %}
+
+            {{post.content|safe}}
+
+            <p class="posted-at"><a href="{{post.canonical_link}}">{{ post.published_date }}</a></p>
+{% endfilter %}
