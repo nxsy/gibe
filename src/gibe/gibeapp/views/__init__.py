@@ -49,36 +49,3 @@ def _update_timeline():
             ct.text = status.text
             ct.created_at = status.created_at
             ct.save()
-
-#def twitter(request):
-#    if request.POST.get("form_id") == "twitter_update_form":
-#        _update_timeline()
-#        return redirect("/admin/twitter")
-#
-#    if request.POST.get("form_id") == "twitter_promote_form":
-#        status_to_promote = request.POST.getlist("status_to_promote")
-#        for status_id in status_to_promote:
-#            ct = models.CachedTweet.objects(status_id=status_id).first()
-#            if ct:
-#                t = models.TweetPost()
-#                t.title = ""
-#                t.content = ct.text
-#                t.creation_date = ct.created_at
-#                t.published_date = ct.created_at
-#                t.canonical_url = "%04d-%02d-%02d-%s" % (ct.created_at.year, ct.created_at.month, ct.created_at.day, status_id)
-#                t.all_urls = [t.canonical_url]
-#                t.tweet_url = "http://twitter.com/%s/status/%s" % (ct.author.screen_name, ct.id)
-#                t.save()
-#
-#        return redirect("/admin/twitter")
-#
-#    timeline = models.CachedTweet.objects().order_by("-created_at").limit(25)
-#
-#    if not timeline:
-#        _update_timeline()
-#        timeline = models.CachedTweet.objects().order_by("-created_at").limit(25)
-#    
-#    context = dict(
-#        timeline = [WrappedStatus(status) for status in timeline],
-#    )
-#    return render_to_response('twitter.xhtml.template', context, RequestContext(request))
