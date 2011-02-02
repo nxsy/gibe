@@ -31,3 +31,4 @@
 
 .env
 activate
+pip-log.txt

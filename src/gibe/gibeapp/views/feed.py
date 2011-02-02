@@ -6,11 +6,11 @@ from gibe.gibeapp.render import PostRenderer
 
 class Feed(ContribFeed):
     def title(self):
-        s = models.BlogSettings.objects(key="blogsettings").first()
+        s = models.BlogSettings.objects.first()
         return s.feed_title or s.title
 
     def description(self):
-        s = models.BlogSettings.objects(key="blogsettings").first()
+        s = models.BlogSettings.objects.first()
         return s.feed_title or s.title
 
     def link(self):

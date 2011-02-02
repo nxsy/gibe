@@ -1,0 +1,13 @@
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_id" value="editor_form" />
+    <input type="hidden" name="draft_id" value="{{draft_id}}" />
+
+    <label for="title">Title</label><input type="text" name="title" value="{{title}}" />
+    <br />
+    <textarea name="content" rows="20" cols="80">{{content}}</textarea>
+    <br />
+    <textarea name="urls" rows="20" cols="80">{{urls}}</textarea>
+    <input type="submit" value="Edit">
+</form>

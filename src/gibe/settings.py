@@ -112,4 +112,4 @@ except ImportError:
     pass
 
 from mongoengine import connect
-connect('ticket', 'dummy', 'dummy')
+connect('gibe1', 'dummy', 'dummy')

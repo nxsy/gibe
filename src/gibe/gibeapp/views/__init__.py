@@ -14,9 +14,9 @@ def index(request):
     return render_to_response("index.xhtml.template", context, RequestContext(request))
 
 def page(request):
-    p = models.Post.objects(all_urls=request.path_info).first()
+    p = models.Page.objects(content__all_urls=request.path_info).first()
     print request.path_info
-    if p.canonical_url != request.path_info:
+    if p.content.canonical_url != request.path_info:
         return redirect(p.canonical_url, permanent=True)
 
     context = dict(
@@ -36,7 +36,7 @@ class WrappedStatus(object):
         return getattr(self.status, key)
 
 def _update_timeline():
-    s = models.TwitterSettings.objects(key='twitter').first()
+    s = models.TwitterSettings.objects.first()
     import tweepy
     auth = tweepy.OAuthHandler(s.consumer_key, s.consumer_secret)
     auth.set_access_token(s.oauth_token, s.oauth_token_secret)

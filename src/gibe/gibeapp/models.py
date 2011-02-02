@@ -1,4 +1,4 @@
-from mongoengine import Document, fields
+from mongoengine import Document, EmbeddedDocument, fields
 
 class User(Document):
     email = fields.StringField(required=True)
@@ -42,8 +42,10 @@ class ImagePost(Post):
 class LinkPost(Post):
     link_url = fields.StringField()
 
+
+
 class Settings(Document):
-    key = fields.StringField(required=True, unique=True)
+    pass
 
 class TwitterSettings(Settings):
     oauth_token = fields.StringField()
@@ -62,10 +64,53 @@ class BlogSettings(Settings):
     feed_title = fields.StringField()
     feed_subtitle = fields.StringField()
     feed_description = fields.StringField()
+    base_url = fields.StringField()
+
+
 
 class CachedTweet(Document):
     status_id = fields.StringField(required=True)
     text = fields.StringField(required=True)
     created_at = fields.DateTimeField(required=True)
     author_screen_name = fields.StringField(required=True)
+
+
+
+# Keeps per-page data of some sort, as opposed to data associated with the
+# particular version of the content in question.  This might be something like
+# "views", tracking search terms used to arrive on the page, or something like
+# that.
+class PageAnnotation(EmbeddedDocument):
+    pass
+
+# Keeps data about the particular version of the content in question.  This
+# might be something like "tags", categories.
+class ContentAnnotation(EmbeddedDocument):
+    pass
+
+class Content(EmbeddedDocument):
+    title = fields.StringField(max_length=120)
+    author = fields.ReferenceField(User)
+    published_date = fields.DateTimeField()
+    creation_date = fields.DateTimeField()
+    all_urls = fields.ListField(fields.StringField())
+    canonical_url = fields.StringField()
+
+    annotations = fields.ListField(fields.EmbeddedDocumentField(ContentAnnotation))
+
+class GibeMarkdownContent(Content):
+    markdown = fields.StringField()
+
+class Page(Document):
+    content = fields.EmbeddedDocumentField(Content)
+    drafts = fields.ListField(fields.EmbeddedDocumentField(Content))
+
+    annotations = fields.ListField(fields.EmbeddedDocumentField(PageAnnotation))
+
+    meta = {
+        'indexes': [
+            'content.published_date',
+            'content.all_urls',
+        ],
+    }
 

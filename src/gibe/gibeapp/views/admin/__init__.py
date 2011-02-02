@@ -72,3 +72,8 @@ def twitter(request):
         timeline = [WrappedStatus(status) for status in timeline],
     )
     return render_to_response('twitter.xhtml.template', context, RequestContext(request))
+
+def editor(request):
+    context = dict(
+    )
+    return render_to_response('editor.xhtml.template', context, RequestContext(request))

@@ -33,7 +33,7 @@ class PostRenderer(object):
         return True
 
     @property
-    def content(self):
+    def content_html(self):
         if isinstance(self.post, models.DeliciousPost):
             md = markdown.Markdown(extensions=[syntaxhighlighterextension, excerpt_extension, 'footnotes'])
             content = md.convert(self.post.comment)
@@ -48,10 +48,14 @@ class PostRenderer(object):
             md = markdown.Markdown(extensions=[syntaxhighlighterextension, excerpt_extension, 'footnotes'])
             content = md.convert(content)
 
+        if isinstance(self.post.content, models.GibeMarkdownContent):
+            md = markdown.Markdown(extensions=[syntaxhighlighterextension, excerpt_extension, 'footnotes'])
+            content = md.convert(self.post.content.markdown)
+
         return content
 
     @property
-    def excerpt(self):
+    def excerpt_html(self):
         if isinstance(self.post, models.DeliciousPost):
             md = markdown.Markdown(extensions=[syntaxhighlighterextension, excerpt_extension, 'footnotes'])
             content = md.convert(self.post.comment)
@@ -84,14 +88,16 @@ class PostRenderer(object):
 
     @property
     def link(self):
-        if self.post.canonical_url:
-            return self.post.canonical_url
+        if self.post.content.canonical_url:
+            return self.post.content.canonical_url
+
         return
 
     @property
     def canonical_link(self):
-        if self.post.canonical_url:
-            return self.post.canonical_url
+        if self.post.content.canonical_url:
+            return self.post.content.canonical_url
+
         return
 
     def __getattr__(self, attr):
@@ -103,6 +109,9 @@ class PostRenderer(object):
 
         if isinstance(self.post, models.MarkupPost):
             return "content-post.xhtml.template"
+
+        if isinstance(self.post.content, models.GibeMarkdownContent):
+            return "content-gibemarkdowncontent.xhtml.template"
 
         if isinstance(self.post, models.DeliciousPost):
             return "content-delicious.xhtml.template"

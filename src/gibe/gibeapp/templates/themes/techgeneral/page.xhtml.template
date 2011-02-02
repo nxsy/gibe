@@ -17,4 +17,11 @@ h1.delicious-title { background-image: url(static/delicious-16x16.png); backgrou
 
 {% include post.template %}
 
+{% if post.show_delicious %}
+{% include "delicious.xhtml.template" %}
+{% endif %}
+{% if post.show_disqus %}
+{% include "disqus.xhtml.template" %}
+{% endif %}
+
 {% endblock %}

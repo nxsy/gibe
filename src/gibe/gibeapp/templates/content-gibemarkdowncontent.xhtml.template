@@ -1,0 +1,10 @@
+{% load typogrify %}
+{% filter typogrify %}
+
+            <p class="posted-at">{{ post.content.published_date }}</p>
+
+            {% if post.content.title %}<h1>{{post.content.title}}</h1>{% endif %}
+
+            {{post.content_html|safe}}
+
+{% endfilter %}
